@@ -2,7 +2,7 @@
 
 > **Purpose of this file.** Drop this into a new Claude conversation (attach it, or paste its contents) and Claude will have full context to continue the project without re-doing research or re-asking questions.
 
-**Last updated:** 2026-04-25 (session 2 — local-prep phase)
+**Last updated:** 2026-04-26 (overnight session 2 — local-prep complete)
 **Owner:** Pranjal (pranjalprakhar2000@gmail.com)
 **Working folder:** `SLM finetunig Project/`
 **Local machine:** MacBook Air M4, 16 GB RAM (MLX-friendly, no CUDA).
@@ -162,7 +162,66 @@ Model 4-bit ~2 GB + LoRA ~200 MB + optimizer ~4–8 GB + activations ~2–4 GB +
 
 ---
 
-## 8. Current session status (2026-04-25 session 2)
+## 8a. Overnight hand-off (2026-04-26)
+
+**Everything below was written while Pranjal slept. Read this first when you resume.**
+
+### Baseline — FIXED and re-run
+- New 200-example GSM8K baseline: **159 / 200 = 79.5%** with `mlx-community/Phi-3-mini-4k-instruct-4bit`, max_tokens=768, temperature=0, CoT prompt with `<think>` scaffolding.
+- Output: `outputs/baselines/2026-04-25-gsm8k-baseline-mlx-200.jsonl`.
+- The earlier "55% on 20 examples" number was bogus — it was dominated by a truncation + extraction bug, not model weakness. Real starting point is ~80%, which means **GSM8K has limited headroom** and clearing the PS06 +5% gate on GSM8K is realistic but not trivial. Plan for StrategyQA as the more-reliable second KPI win and treat MMLU as stretch.
+
+### Reward / extraction fix
+- `src/ps06/rewards.py::extract_final_number` now prefers, in order: `\boxed{...}` → last number *after* the final `</think>` → text matching `"Answer: N"` / `"answer is N"` → last number overall.
+- Unit-checked on 5 synthetic cases covering truncated think-blocks, boxed answers, and "Answer:" suffix; all pass.
+- This matters for GRPO too: without it the model could reward-hack by sticking the correct digit inside `<think>` and producing anything afterward.
+
+### Artifacts authored (all committed, all dry-run / smoke-tested locally)
+
+| Path | Status |
+|---|---|
+| `requirements/gpu.txt` | Written. Targets CUDA 12.1, bf16 LoRA stack. bitsandbytes commented (A100-40GB fallback). |
+| `scripts/setup/2026-04-25-check_gpu_env.py` | Written. Not runnable on Mac; runs on GPU host first. |
+| `src/ps06/data.py` | Added `load_mmlu_split` + `load_strategyqa_split` + prompt formatters. |
+| `scripts/smoke/2026-04-25-smoke_mmlu_strategyqa_loaders.py` | **Ran successfully.** MMLU ('cais/mmlu') and StrategyQA ('ChilleD/StrategyQA', test split n=687) both load and format. |
+| `scripts/eval/2026-04-25-lm_eval_baselines.sh` | Written. Baseline wrapper: gsm8k_cot (5-shot), mmlu (5-shot), bbh_cot_fewshot_strategyqa. |
+| `scripts/eval/2026-04-25-lm_eval_finetuned.sh` | Written. Same tasks, takes adapter path + tag. |
+| `scripts/eval/2026-04-25-compare_lm_eval.py` | Written. Parses `results_*.json` under two dirs and prints delta table. |
+| `scripts/train/2026-04-25-sft_phi3.py` | Written. **Dry-run passes** on synthetic `data/sft/synthetic_smoke.jsonl`. Uses TRL `SFTTrainer` + PEFT LoRA + bf16 + flash-attn-2. |
+| `scripts/train/2026-04-25-grpo_phi3.py` | Written. **Dry-run passes** including reward-function sanity (acc = [1,1,0], fmt = [0.5,0,0.5]). Uses TRL `GRPOTrainer` + PEFT LoRA. Optional `--sft-adapter` to warm-start. |
+| `scripts/data/2026-04-25-prepare_sft_data.py` | Written. Streams `nvidia/OpenMathInstruct-2`, filters, dedups, formats to `{prompt, completion}` JSONL. **Smoke ran:** 50 kept from 51 scanned, writes valid rows with `\boxed{...}` solutions. |
+| `data/sft/phi3_sft_smoke.jsonl` | 50 example rows from OpenMathInstruct-2 (augmented_gsm8k source). For quick SFT shakeout. |
+
+### Git state
+- Repo initialized during this session (was not a git repo before).
+- Commits in order: `pre-overnight snapshot` → `GPU-side scripts, reward extraction fix, loaders` → `README update, eval compare, SFT data prep, smoke verified` → (final commit below).
+
+### What did NOT get done (deliberately skipped or deferred)
+- **Large SFT data pull** (5K+ from OpenMathInstruct-2). Script works; just run on the GPU host or re-run locally with `--num-keep 5000 --max-scan 150000`. Deferred to avoid hours of network I/O overnight.
+- **Actual model training / eval.** By design — no GPU.
+- **`lm-eval-harness` install locally.** GPU-only; only listed in `requirements/gpu.txt`.
+- **Unsloth integration.** Left as optional. The TRL path in both train scripts should work first; swap to Unsloth later if VRAM or speed is tight.
+
+## 8b. First-moves checklist for when the H100 arrives
+
+Do these in order on the GPU host. Each step assumes the previous one passed.
+
+1. `pip install -r requirements/gpu.txt`
+2. `python scripts/setup/2026-04-25-check_gpu_env.py` — must print PASS.
+3. `python scripts/data/2026-04-25-prepare_sft_data.py --output data/sft/phi3_sft.jsonl --num-keep 5000 --max-scan 150000` (5-20 min depending on network).
+4. `bash scripts/eval/2026-04-25-lm_eval_baselines.sh` — gets the REAL baseline on all three KPI benchmarks (not just the MLX tiny subset). **This is the number you'll compare against.** Expect ~1-2 hours on H100.
+5. `python scripts/train/2026-04-25-sft_phi3.py --train-file data/sft/phi3_sft.jsonl --output-dir outputs/sft/phi3-mini-ft --num-epochs 1 --per-device-batch-size 4 --grad-accum 4`. Expect ~30-60 min for 5K examples on H100.
+6. `python scripts/train/2026-04-25-grpo_phi3.py --sft-adapter outputs/sft/phi3-mini-ft --output-dir outputs/grpo/phi3-mini-rl --num-train-epochs 2 --per-device-batch-size 2 --num-generations 4`. Expect **many** hours (RL is slow). Watch logs for entropy / KL / reward curves.
+7. `bash scripts/eval/2026-04-25-lm_eval_finetuned.sh outputs/grpo/phi3-mini-rl grpo`.
+8. `python scripts/eval/2026-04-25-compare_lm_eval.py outputs/eval/baseline outputs/eval/grpo` — delta table.
+
+### Known risks / things to re-check on the GPU host
+- **`flash_attention_2`** is requested in both train scripts. If the GPU wheel is missing, remove `attn_implementation="flash_attention_2"` or install `flash-attn` first. Falls back cleanly if you just drop the arg.
+- **trl version compatibility.** Pinned `trl>=0.12,<0.14` — if `TRLGRPOConfig` kwargs diverge in a point release, the arg names may need tweaking (e.g. `beta` vs `kl_coef`).
+- **StrategyQA in lm-eval-harness** — I used `bbh_cot_fewshot_strategyqa` because that's the BBH-registered variant. If the harness version uses a different task name, `lm_eval --tasks list | grep -i strategyqa` will show the right one.
+- **Phi-3-Mini GSM8K baseline of ~80%** leaves thin headroom for +5pt gain on GSM8K. If after SFT+GRPO the gain looks small (<+2pt), pivot reporting to StrategyQA and MMLU where Phi-3-Mini sits further from ceiling.
+
+## 8c. Current session status (2026-04-25 session 2 — pre-overnight)
 
 ### Findings flagged
 - **Baseline truncation bug.** `max_tokens=256` in `scripts/baseline/2026-04-25-baseline_gsm8k_mlx.py` is too low for multi-`<think>` outputs. idx=2 in `outputs/baselines/2026-04-25-gsm8k-baseline-mlx-20.jsonl` is cut off mid-sentence and `extract_final_number` pulls a scratch number ($130000) instead of the real answer. Raise to **768**.

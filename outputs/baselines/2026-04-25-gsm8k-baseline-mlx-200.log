@@ -3,3 +3,1008 @@ Loading GSM8K/test with limit=200
 Loading model: mlx-community/Phi-3-mini-4k-instruct-4bit
 First run can take several minutes because the model is downloaded once.
 Fetching 9 files:   0%|          | 0/9 [00:00<?, ?it/s]Fetching 9 files: 100%|██████████| 9/9 [00:00<00:00, 84072.91it/s]
+
+[1/200] Generating...
+prediction: 18
+reference:  18
+correct:    True
+
+[2/200] Generating...
+prediction: 3
+reference:  3
+correct:    True
+
+[3/200] Generating...
+prediction: 70000
+reference:  70000
+correct:    True
+
+[4/200] Generating...
+prediction: 540
+reference:  540
+correct:    True
+
+[5/200] Generating...
+prediction: 0
+reference:  20
+correct:    False
+
+[6/200] Generating...
+prediction: 64
+reference:  64
+correct:    True
+
+[7/200] Generating...
+prediction: 260
+reference:  260
+correct:    True
+
+[8/200] Generating...
+prediction: 140
+reference:  160
+correct:    False
+
+[9/200] Generating...
+prediction: 135
+reference:  45
+correct:    False
+
+[10/200] Generating...
+prediction: 460
+reference:  460
+correct:    True
+
+[11/200] Generating...
+prediction: 366
+reference:  366
+correct:    True
+
+[12/200] Generating...
+prediction: 694
+reference:  694
+correct:    True
+
+[13/200] Generating...
+prediction: 12
+reference:  13
+correct:    False
+
+[14/200] Generating...
+prediction: 18
+reference:  18
+correct:    True
+
+[15/200] Generating...
+prediction: 60
+reference:  60
+correct:    True
+
+[16/200] Generating...
+prediction: 125
+reference:  125
+correct:    True
+
+[17/200] Generating...
+prediction: 230
+reference:  230
+correct:    True
+
+[18/200] Generating...
+prediction: 57500
+reference:  57500
+correct:    True
+
+[19/200] Generating...
+prediction: 7
+reference:  7
+correct:    True
+
+[20/200] Generating...
+prediction: 6
+reference:  6
+correct:    True
+
+[21/200] Generating...
+prediction: 15.57
+reference:  15
+correct:    False
+
+[22/200] Generating...
+prediction: 14
+reference:  14
+correct:    True
+
+[23/200] Generating...
+prediction: 7
+reference:  7
+correct:    True
+
+[24/200] Generating...
+prediction: 8
+reference:  8
+correct:    True
+
+[25/200] Generating...
+prediction: 26
+reference:  26
+correct:    True
+
+[26/200] Generating...
+prediction: 2
+reference:  2
+correct:    True
+
+[27/200] Generating...
+prediction: 243
+reference:  243
+correct:    True
+
+[28/200] Generating...
+prediction: 16
+reference:  16
+correct:    True
+
+[29/200] Generating...
+prediction: 25
+reference:  25
+correct:    True
+
+[30/200] Generating...
+prediction: 104
+reference:  104
+correct:    True
+
+[31/200] Generating...
+prediction: 109
+reference:  109
+correct:    True
+
+[32/200] Generating...
+prediction: 80
+reference:  80
+correct:    True
+
+[33/200] Generating...
+prediction: 35
+reference:  35
+correct:    True
+
+[34/200] Generating...
+prediction: 70
+reference:  70
+correct:    True
+
+[35/200] Generating...
+prediction: 23
+reference:  23
+correct:    True
+
+[36/200] Generating...
+prediction: 9
+reference:  9
+correct:    True
+
+[37/200] Generating...
+prediction: 75
+reference:  75
+correct:    True
+
+[38/200] Generating...
+prediction: 11
+reference:  2
+correct:    False
+
+[39/200] Generating...
+prediction: 10
+reference:  10
+correct:    True
+
+[40/200] Generating...
+prediction: 18
+reference:  18
+correct:    True
+
+[41/200] Generating...
+prediction: 8
+reference:  8
+correct:    True
+
+[42/200] Generating...
+prediction: 200
+reference:  200
+correct:    True
+
+[43/200] Generating...
+prediction: 26
+reference:  26
+correct:    True
+
+[44/200] Generating...
+prediction: 48
+reference:  48
+correct:    True
+
+[45/200] Generating...
+prediction: 20
+reference:  20
+correct:    True
+
+[46/200] Generating...
+prediction: 104
+reference:  104
+correct:    True
+
+[47/200] Generating...
+prediction: 197
+reference:  163
+correct:    False
+
+[48/200] Generating...
+prediction: 800
+reference:  800
+correct:    True
+
+[49/200] Generating...
+prediction: 8
+reference:  8
+correct:    True
+
+[50/200] Generating...
+prediction: 30
+reference:  30
+correct:    True
+
+[51/200] Generating...
+prediction: 294
+reference:  294
+correct:    True
+
+[52/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[53/200] Generating...
+prediction: 15
+reference:  15
+correct:    True
+
+[54/200] Generating...
+prediction: 40
+reference:  40
+correct:    True
+
+[55/200] Generating...
+prediction: 55
+reference:  40
+correct:    False
+
+[56/200] Generating...
+prediction: 14
+reference:  14
+correct:    True
+
+[57/200] Generating...
+prediction: 3
+reference:  3
+correct:    True
+
+[58/200] Generating...
+prediction: 83
+reference:  83
+correct:    True
+
+[59/200] Generating...
+prediction: 57
+reference:  57
+correct:    True
+
+[60/200] Generating...
+prediction: 137
+reference:  187
+correct:    False
+
+[61/200] Generating...
+prediction: 17
+reference:  17
+correct:    True
+
+[62/200] Generating...
+prediction: 1430
+reference:  1430
+correct:    True
+
+[63/200] Generating...
+prediction: 1250
+reference:  25000
+correct:    False
+
+[64/200] Generating...
+prediction: 1596
+reference:  1596
+correct:    True
+
+[65/200] Generating...
+prediction: 300
+reference:  300
+correct:    True
+
+[66/200] Generating...
+prediction: 36
+reference:  36
+correct:    True
+
+[67/200] Generating...
+prediction: 28
+reference:  48
+correct:    False
+
+[68/200] Generating...
+prediction: 595
+reference:  595
+correct:    True
+
+[69/200] Generating...
+prediction: 36
+reference:  36
+correct:    True
+
+[70/200] Generating...
+prediction: 20
+reference:  60
+correct:    False
+
+[71/200] Generating...
+prediction: 7425
+reference:  7425
+correct:    True
+
+[72/200] Generating...
+prediction: 60
+reference:  60
+correct:    True
+
+[73/200] Generating...
+prediction: 2
+reference:  221
+correct:    False
+
+[74/200] Generating...
+prediction: 275
+reference:  255
+correct:    False
+
+[75/200] Generating...
+prediction: 88
+reference:  88
+correct:    True
+
+[76/200] Generating...
+prediction: 7.75
+reference:  60
+correct:    False
+
+[77/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[78/200] Generating...
+prediction: 100
+reference:  100
+correct:    True
+
+[79/200] Generating...
+prediction: 18
+reference:  6
+correct:    False
+
+[80/200] Generating...
+prediction: 70
+reference:  70
+correct:    True
+
+[81/200] Generating...
+prediction: 10
+reference:  10
+correct:    True
+
+[82/200] Generating...
+prediction: 7
+reference:  17
+correct:    False
+
+[83/200] Generating...
+prediction: 623
+reference:  623
+correct:    True
+
+[84/200] Generating...
+prediction: 60
+reference:  600
+correct:    False
+
+[85/200] Generating...
+prediction: 15
+reference:  15
+correct:    True
+
+[86/200] Generating...
+prediction: 44
+reference:  44
+correct:    True
+
+[87/200] Generating...
+prediction: 22
+reference:  22
+correct:    True
+
+[88/200] Generating...
+prediction: 1080
+reference:  9360
+correct:    False
+
+[89/200] Generating...
+prediction: 8000
+reference:  8000
+correct:    True
+
+[90/200] Generating...
+prediction: 18
+reference:  24
+correct:    False
+
+[91/200] Generating...
+prediction: 225
+reference:  225
+correct:    True
+
+[92/200] Generating...
+prediction: 28
+reference:  28
+correct:    True
+
+[93/200] Generating...
+prediction: 4
+reference:  4
+correct:    True
+
+[94/200] Generating...
+prediction: 36
+reference:  36
+correct:    True
+
+[95/200] Generating...
+prediction: 348
+reference:  348
+correct:    True
+
+[96/200] Generating...
+prediction: 40
+reference:  40
+correct:    True
+
+[97/200] Generating...
+prediction: 3
+reference:  3
+correct:    True
+
+[98/200] Generating...
+prediction: 12
+reference:  12
+correct:    True
+
+[99/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[100/200] Generating...
+prediction: 58
+reference:  58
+correct:    True
+
+[101/200] Generating...
+prediction: 178
+reference:  175
+correct:    False
+
+[102/200] Generating...
+prediction: 1.67
+reference:  6
+correct:    False
+
+[103/200] Generating...
+prediction: 17
+reference:  26
+correct:    False
+
+[104/200] Generating...
+prediction: 140
+reference:  140
+correct:    True
+
+[105/200] Generating...
+prediction: 500
+reference:  500
+correct:    True
+
+[106/200] Generating...
+prediction: 20
+reference:  20
+correct:    True
+
+[107/200] Generating...
+prediction: 72
+reference:  72
+correct:    True
+
+[108/200] Generating...
+prediction: 3
+reference:  3
+correct:    True
+
+[109/200] Generating...
+prediction: 50
+reference:  50
+correct:    True
+
+[110/200] Generating...
+prediction: 28
+reference:  28
+correct:    True
+
+[111/200] Generating...
+prediction: 45
+reference:  45
+correct:    True
+
+[112/200] Generating...
+prediction: 16
+reference:  16
+correct:    True
+
+[113/200] Generating...
+prediction: 24
+reference:  24
+correct:    True
+
+[114/200] Generating...
+prediction: 25
+reference:  25
+correct:    True
+
+[115/200] Generating...
+prediction: 6
+reference:  6
+correct:    True
+
+[116/200] Generating...
+prediction: 90
+reference:  90
+correct:    True
+
+[117/200] Generating...
+prediction: 42
+reference:  42
+correct:    True
+
+[118/200] Generating...
+prediction: 360
+reference:  360
+correct:    True
+
+[119/200] Generating...
+prediction: 4
+reference:  4
+correct:    True
+
+[120/200] Generating...
+prediction: 99077.71
+reference:  95200
+correct:    False
+
+[121/200] Generating...
+prediction: 240
+reference:  240
+correct:    True
+
+[122/200] Generating...
+prediction: 27
+reference:  27
+correct:    True
+
+[123/200] Generating...
+prediction: 48
+reference:  48
+correct:    True
+
+[124/200] Generating...
+prediction: 50
+reference:  50
+correct:    True
+
+[125/200] Generating...
+prediction: 10
+reference:  10
+correct:    True
+
+[126/200] Generating...
+prediction: 10
+reference:  10
+correct:    True
+
+[127/200] Generating...
+prediction: 82
+reference:  82
+correct:    True
+
+[128/200] Generating...
+prediction: 95
+reference:  120
+correct:    False
+
+[129/200] Generating...
+prediction: 880
+reference:  880
+correct:    True
+
+[130/200] Generating...
+prediction: 10000
+reference:  10000
+correct:    True
+
+[131/200] Generating...
+prediction: 30
+reference:  30
+correct:    True
+
+[132/200] Generating...
+prediction: 940
+reference:  940
+correct:    True
+
+[133/200] Generating...
+prediction: 60
+reference:  60
+correct:    True
+
+[134/200] Generating...
+prediction: 13
+reference:  13
+correct:    True
+
+[135/200] Generating...
+prediction: 720
+reference:  720
+correct:    True
+
+[136/200] Generating...
+prediction: 40
+reference:  40
+correct:    True
+
+[137/200] Generating...
+prediction: 6
+reference:  6
+correct:    True
+
+[138/200] Generating...
+prediction: 30
+reference:  29
+correct:    False
+
+[139/200] Generating...
+prediction: 105
+reference:  105
+correct:    True
+
+[140/200] Generating...
+prediction: 70
+reference:  70
+correct:    True
+
+[141/200] Generating...
+prediction: 20
+reference:  20
+correct:    True
+
+[142/200] Generating...
+prediction: 400
+reference:  400
+correct:    True
+
+[143/200] Generating...
+prediction: 140
+reference:  140
+correct:    True
+
+[144/200] Generating...
+prediction: 16
+reference:  16
+correct:    True
+
+[145/200] Generating...
+prediction: 20
+reference:  20
+correct:    True
+
+[146/200] Generating...
+prediction: 4000
+reference:  4000
+correct:    True
+
+[147/200] Generating...
+prediction: 2125
+reference:  2125
+correct:    True
+
+[148/200] Generating...
+prediction: 45
+reference:  75
+correct:    False
+
+[149/200] Generating...
+prediction: 30
+reference:  30
+correct:    True
+
+[150/200] Generating...
+prediction: 1
+reference:  16
+correct:    False
+
+[151/200] Generating...
+prediction: 4
+reference:  4
+correct:    True
+
+[152/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[153/200] Generating...
+prediction: 4
+reference:  4
+correct:    True
+
+[154/200] Generating...
+prediction: 2019
+reference:  48
+correct:    False
+
+[155/200] Generating...
+prediction: 208
+reference:  272
+correct:    False
+
+[156/200] Generating...
+prediction: 280
+reference:  280
+correct:    True
+
+[157/200] Generating...
+prediction: 1400
+reference:  1400
+correct:    True
+
+[158/200] Generating...
+prediction: 2440
+reference:  80
+correct:    False
+
+[159/200] Generating...
+prediction: 34
+reference:  34
+correct:    True
+
+[160/200] Generating...
+prediction: 17
+reference:  15
+correct:    False
+
+[161/200] Generating...
+prediction: 16
+reference:  16
+correct:    True
+
+[162/200] Generating...
+prediction: 32
+reference:  32
+correct:    True
+
+[163/200] Generating...
+prediction: 92
+reference:  92
+correct:    True
+
+[164/200] Generating...
+prediction: 105
+reference:  50
+correct:    False
+
+[165/200] Generating...
+prediction: 15
+reference:  15
+correct:    True
+
+[166/200] Generating...
+prediction: 77
+reference:  77
+correct:    True
+
+[167/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[168/200] Generating...
+prediction: 16
+reference:  16
+correct:    True
+
+[169/200] Generating...
+prediction: 18
+reference:  18
+correct:    True
+
+[170/200] Generating...
+prediction: 120
+reference:  120
+correct:    True
+
+[171/200] Generating...
+prediction: 150
+reference:  150
+correct:    True
+
+[172/200] Generating...
+prediction: 1210
+reference:  1210
+correct:    True
+
+[173/200] Generating...
+prediction: 51
+reference:  51
+correct:    True
+
+[174/200] Generating...
+prediction: 18000
+reference:  18000
+correct:    True
+
+[175/200] Generating...
+prediction: 95
+reference:  95
+correct:    True
+
+[176/200] Generating...
+prediction: 12.5
+reference:  15
+correct:    False
+
+[177/200] Generating...
+prediction: 100
+reference:  100
+correct:    True
+
+[178/200] Generating...
+prediction: 350
+reference:  350
+correct:    True
+
+[179/200] Generating...
+prediction: 122
+reference:  122
+correct:    True
+
+[180/200] Generating...
+prediction: 130
+reference:  130
+correct:    True
+
+[181/200] Generating...
+prediction: 20
+reference:  20
+correct:    True
+
+[182/200] Generating...
+prediction: 160
+reference:  160
+correct:    True
+
+[183/200] Generating...
+prediction: 24
+reference:  23
+correct:    False
+
+[184/200] Generating...
+prediction: 2
+reference:  2
+correct:    True
+
+[185/200] Generating...
+prediction: 25
+reference:  25
+correct:    True
+
+[186/200] Generating...
+prediction: 30
+reference:  30
+correct:    True
+
+[187/200] Generating...
+prediction: 13
+reference:  5
+correct:    False
+
+[188/200] Generating...
+prediction: 106.12
+reference:  106
+correct:    False
+
+[189/200] Generating...
+prediction: 50
+reference:  50
+correct:    True
+
+[190/200] Generating...
+prediction: 34
+reference:  34
+correct:    True
+
+[191/200] Generating...
+prediction: 360
+reference:  360
+correct:    True
+
+[192/200] Generating...
+prediction: 5
+reference:  5
+correct:    True
+
+[193/200] Generating...
+prediction: 91
+reference:  91
+correct:    True
+
+[194/200] Generating...
+prediction: 18
+reference:  24
+correct:    False
+
+[195/200] Generating...
+prediction: 0
+reference:  10
+correct:    False
+
+[196/200] Generating...
+prediction: 60
+reference:  12
+correct:    False
+
+[197/200] Generating...
+prediction: 120
+reference:  120
+correct:    True
+
+[198/200] Generating...
+prediction: 6277
+reference:  6277
+correct:    True
+
+[199/200] Generating...
+prediction: 360
+reference:  320
+correct:    False
+
+[200/200] Generating...
+prediction: 7500
+reference:  7500
+correct:    True
+
+Evaluated: 200
+Correct: 159/200
+Accuracy: 79.50%
+Wrote: /Users/ppsfolder/Cowork Playground/SLM finetunig Project/outputs/baselines/2026-04-25-gsm8k-baseline-mlx-200.jsonl
