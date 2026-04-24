@@ -1,0 +1,49 @@
+# GPU training requirements for PS06 (Linux + CUDA 12.1, H100/A100 targets).
+# Install with:
+#   pip install --upgrade pip wheel
+#   pip install -r requirements/gpu.txt
+#
+# Note: on an H100 we use bf16 + LoRA (no 4-bit required).
+# bitsandbytes is listed as optional (commented) for the A100-40GB fallback.
+
+# --- PyTorch (CUDA 12.1) ---
+# If the default index does not have a matching wheel, run:
+#   pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu121
+torch==2.4.1
+torchvision==0.19.1
+torchaudio==2.4.1
+
+# --- Core HF stack ---
+transformers>=4.44,<4.47
+accelerate>=0.34,<0.36
+datasets>=2.21,<3.2
+tokenizers>=0.20
+sentencepiece>=0.2.0
+safetensors>=0.4.5
+huggingface_hub>=0.25,<0.27
+
+# --- Training / RL ---
+peft>=0.13,<0.15
+trl>=0.12,<0.14        # GRPOTrainer requires trl >= 0.11, tested on 0.12
+# unsloth is optional (much faster LoRA + GRPO). Install separately when needed:
+#   pip install "unsloth[cu121-torch241] @ git+https://github.com/unslothai/unsloth.git"
+
+# --- Eval ---
+lm-eval>=0.4.4         # lm-evaluation-harness; supports gsm8k, mmlu, strategyqa
+evaluate>=0.4.3
+
+# --- Monitoring ---
+wandb>=0.17
+tensorboard>=2.17
+
+# --- Utilities ---
+numpy>=1.26,<2.2
+pandas>=2.2
+scikit-learn>=1.5
+einops>=0.8
+tqdm>=4.66
+pyyaml>=6.0
+
+# --- Optional (uncomment on A100-40GB fallback) ---
+# bitsandbytes>=0.43      # 4-bit quantization, CUDA-only
+# auto-gptq>=0.7          # optional quantized weights

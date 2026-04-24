@@ -7,7 +7,12 @@ from decimal import Decimal, InvalidOperation
 
 THINK_PATTERN = re.compile(r"<think>.*?</think>", re.IGNORECASE | re.DOTALL)
 BOXED_PATTERN = re.compile(r"\\boxed\{([^{}]+)\}")
+ANSWER_PATTERN = re.compile(
+    r"(?:final\s+answer|answer)\s*(?:is|:|=)\s*\$?([-+]?\d[\d,]*(?:\.\d+)?)",
+    re.IGNORECASE,
+)
 NUMBER_PATTERN = re.compile(r"[-+]?\d[\d,]*(?:\.\d+)?")
+THINK_CLOSE_PATTERN = re.compile(r"</think>", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -38,22 +43,43 @@ def extract_gsm8k_reference(answer: str) -> str | None:
 
 
 def extract_final_number(text: str) -> str | None:
-    """Return the last numeric-looking value in a generated solution."""
+    """Extract the predicted numeric answer.
+
+    Priority: \\boxed{...} > text after last </think> > "Answer: N" > last number.
+    Searching after </think> prevents picking up numbers from scratch work when
+    the response is truncated mid-reasoning.
+    """
     if not text:
         return None
 
     boxed = BOXED_PATTERN.findall(text)
     if boxed:
-        text = boxed[-1]
+        return normalize_number(_last_number(boxed[-1]))
 
-    matches = NUMBER_PATTERN.findall(text.replace("$", ""))
-    if not matches:
+    post_think = text
+    close_matches = list(THINK_CLOSE_PATTERN.finditer(text))
+    if close_matches:
+        post_think = text[close_matches[-1].end():]
+
+    answer_match = ANSWER_PATTERN.findall(post_think)
+    if answer_match:
+        return normalize_number(answer_match[-1])
+
+    post_think_num = _last_number(post_think)
+    if post_think_num is not None:
+        return normalize_number(post_think_num)
+
+    return normalize_number(_last_number(text))
+
+
+def _last_number(text: str) -> str | None:
+    matches = NUMBER_PATTERN.findall((text or "").replace("$", ""))
+    return matches[-1] if matches else None
+
+
+def normalize_number(value: str | None) -> str | None:
+    if value is None:
         return None
-
-    return normalize_number(matches[-1])
-
-
-def normalize_number(value: str) -> str | None:
     cleaned = value.strip().replace(",", "")
     if not cleaned:
         return None

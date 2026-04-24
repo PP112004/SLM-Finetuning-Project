@@ -40,7 +40,7 @@ def main() -> int:
     parser.add_argument("--model", default=DEFAULT_MODEL, help="MLX model repo or local model path")
     parser.add_argument("--split", default="test", help="GSM8K split")
     parser.add_argument("--limit", type=int, default=3, help="Number of examples to evaluate")
-    parser.add_argument("--max-tokens", type=int, default=256, help="Max generated tokens per problem")
+    parser.add_argument("--max-tokens", type=int, default=768, help="Max generated tokens per problem")
     parser.add_argument("--temperature", type=float, default=0.0, help="Generation temperature")
     parser.add_argument(
         "--output",
