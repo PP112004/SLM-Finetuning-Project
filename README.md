@@ -286,7 +286,6 @@ python scripts/eval/2026-04-25-compare_lm_eval.py \
 
 ## 9. Pointers to deeper context
 
-- **[`docs/planning/project-memory_claude.md`](docs/planning/project-memory_claude.md)** — The full planning document. Contains the literature survey, cloud-compute comparison, exact hyperparameters, and the overnight hand-off notes. Read this if you need full context.
 - **[`docs/planning/2026-04-26-overnight-report.md`](docs/planning/2026-04-26-overnight-report.md)** — Short, plain-English report of what was done during the overnight setup session, including the baseline-bug debrief.
 - **[`docs/problem-statement/ps06-ennovatex-hackathon.pdf`](docs/problem-statement/ps06-ennovatex-hackathon.pdf)** — Official problem statement with all rules and targets.
 - **[`docs/research/2026-04-22-ps06-slm-reasoning-research.docx`](docs/research/2026-04-22-ps06-slm-reasoning-research.docx)** — Literature survey: DeepSeek-R1, rStar-Math, Qwen2.5-Math, OpenR1, etc.
