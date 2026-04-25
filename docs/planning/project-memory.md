@@ -1,6 +1,6 @@
 # Project Memory — PS 06 SLM Reasoning Hackathon
 
-> **Purpose of this file.** Drop this into a new Claude conversation (attach it, or paste its contents) and Claude will have full context to continue the project without re-doing research or re-asking questions.
+> **Purpose of this file.** Drop this into a conversation (attach it, or paste its contents) and Claude will have full context to continue the project without re-doing research or re-asking questions.
 
 **Last updated:** 2026-04-26 (overnight session 2 — local-prep complete)
 **Owner:** Pranjal (pranjalprakhar2000@gmail.com)
