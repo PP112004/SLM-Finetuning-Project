@@ -1,5 +1,7 @@
 # PS06 — Enhancing Reasoning in a Small Language Model via Reinforcement Learning
 
+Fine-tuning Phi-3-Mini (3.8B) for multi-step reasoning using GRPO — same RL technique as DeepSeek-R1. 79.5% on GSM8K.
+
 This repository is our entry for **Ennovate-X Problem Statement 06**. The problem asks us to take a small language model (≤7B parameters) and improve its *reasoning* ability — solving math word problems, answering multiple-choice questions, and handling yes/no common-sense questions — using reinforcement learning (RL).
 
 This README walks through the **what, the why, and the how** from first principles. If you know roughly what an LLM is and have seen the words "fine-tuning" before, you should be able to follow along.
